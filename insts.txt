@@ -1,0 +1,26 @@
+cp ./bot/src/main/resources/application.conf.example .
+
+edit application.conf
+
+java -jar -Dconfig.file=application.conf ./bot/target/scala-2.12/bot-assembly-0.1.jar bot
+
+CREATE ROLE dom WITH LOGIN PASSWORD '<pwd>';
+
+sudo -u postgres createdb dom
+
+sudo -u postgres psql dom < bkp
+
+curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup
+
+sudo /etc/init.d/redis-server start
+
+https://www.postgresql.org/docs/8.1/backup.html
+
+pg_dump dbname > outfile
+
+psql dbname < infile
+
+pg_dumpall > outfile
+
+psql -f infile postgres
+
